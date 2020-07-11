@@ -30,3 +30,22 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+def validateMonth(input, min, max, name):
+  if (input >= min and input <= max):
+    return input
+  else:
+    raise Exception(f"Optional {name} argument must be an integer between {min} and {max}.")
+
+now = datetime.now()
+
+args = sys.argv
+
+year = now.year if (len(args) < 3) else int(args[2])
+month = now.month if (len(args) < 2) else validateMonth(int(args[1]), 1, 12, "Month")
+
+
+def main(month = None, year = None):
+  print(calendar.month(year, month))
+
+main(month, year)
