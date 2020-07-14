@@ -41,6 +41,10 @@ now = datetime.now()
 
 args = sys.argv
 
+if (len(args) > 3):
+  print("Usage: 14_cal.py [month] [year]")
+  sys.exit()
+
 year = now.year if (len(args) < 3) else int(args[2])
 month = now.month if (len(args) < 2) else validateMonth(int(args[1]), 1, 12, "Month")
 
